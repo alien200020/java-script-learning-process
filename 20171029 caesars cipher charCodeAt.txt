@@ -1,0 +1,22 @@
+﻿
+function rot13(str) { 
+  var arr = str.split("");//turn string into array
+  var second = [];
+  for (i=0; i<arr.length; i++) { //create a loop go through every elements
+    if (arr[i].charCodeAt() > 64 && arr[i].charCodeAt() < 91) {
+    //first layer checks if the character is an alphabet
+      var x = arr[i].charCodeAt();
+    //second layer change numbers into alphabet and push it to another array
+          if (x < 78) {  
+            second.push(String.fromCharCode(x + 13));
+          }  //because the range is between 65 to 90, so if the number is bigger than 78, 
+             //by adding 13 will make it bigger than 90
+          else {
+            second.push(String.fromCharCode(x - 13));//moving backward 13 alphabet
+          }}
+    else {
+      second.push(arr[i]);//remain non-alphabet characters
+    }
+  }
+  return second.join("") ;
+}
